@@ -4,9 +4,11 @@ const express = require('express')
 const colors = require('colors')
 const dotenv = require('dotenv').config()
 const port = process.env.PORT || 5000
-const app = express()
+const connectDB = require('./config/db')
+const app = express() 
 const { errorHandler } = require('./middleware/errorMiddleware')
 
+connectDB()
 
  //Esto es para probar ya que lo correcto sería tener una carpeta de rutas y no todo en el archivo server.js 
  //Se prueba en postman con GET y localhost:5000/api/tareas
