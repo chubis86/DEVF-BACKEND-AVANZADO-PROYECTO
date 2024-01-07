@@ -2,7 +2,7 @@
     res.status(200).json({message:'Obtener algo'})
  }
 
- const setTareas = (req, res) => {
+ const setTareas = async (req, res) => {
     if(!req.body.texto){
         res.status(400)
         throw new Error ("Por favor teclea la descripción")
@@ -10,11 +10,11 @@
     res.status(201).json({message:'Crear nueva tarea'})
  }
 
- const modificarTareas = (req, res) => {
+ const modificarTareas = async (req, res) => {
     res.status(200).json({message:`Modificar la tarea número ${req.params.id}`})
  }
 
- const eliminarTareas = (req, res) => {
+ const eliminarTareas = async (req, res) => {
     res.status(200).json({message:`Eliminar la tarea número ${req.params.id}`})
  }
 
