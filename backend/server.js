@@ -12,6 +12,11 @@ const app = express()
     res.status(200).json({message:'Obtener algo'})
 })
  */
+
+//Estas líneas son para recibir info del body por post
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+
 app.use('/api/tareas', require('./routes/tareasRoutes'))
 
 app.listen(port, () => console.log(`Servidor iniciado en puerto ${port}`))  

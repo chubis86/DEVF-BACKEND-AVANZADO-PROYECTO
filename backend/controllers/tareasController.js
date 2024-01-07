@@ -3,6 +3,10 @@
  }
 
  const setTareas = (req, res) => {
+    if(!req.body.texto){
+        res.status(400)
+        throw new Error ("por favor teclea la descripción")
+    }
     res.status(201).json({message:'Crear nueva tarea'})
  }
 
