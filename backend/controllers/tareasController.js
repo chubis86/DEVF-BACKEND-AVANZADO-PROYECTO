@@ -44,10 +44,16 @@ const getTareas = asyncHandler ( async (req, res) => {
      res.status(400)
      throw new Error('La tarea no fue encontrada')
    } 
+    
+   ///Verificamos que la tarea sea del usuario
+   if(tarea.user.toString() !== req.user.id){
+      res.status(401)
+      throw new Error('Acceso no autorizado')
+   }else{
+      await Tarea.findByIdAndDelete(req.params.id)     
+      res.status(200).json({message:`Tarea ${tarea} eliminada`})
+   }
    
-   await Tarea.findByIdAndDelete(req.params.id)
-     
-    res.status(200).json({message:`Tarea ${tarea} eliminada`})
  })
 
 
